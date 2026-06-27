@@ -121,7 +121,7 @@ with st.sidebar:
         st.success("API key cargada automaticamente.")
     else:
         api_key = st.text_input("API key de OpenAI", type="password")
-    st.divider())
+    st.divider()
     st.header("Stock actual (demo)")
     st.caption("Cambia los valores y volve a preguntar para simular escenarios.")
     stock_pu = st.number_input("Conjunto Sistema PU (kg)", min_value=0, value=1200, step=100)
