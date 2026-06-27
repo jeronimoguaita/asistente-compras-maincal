@@ -106,11 +106,21 @@ st.set_page_config(page_title="Asistente de Compras Maincal", page_icon="📦", 
 st.title("📦 Asistente de Compras Maincal")
 st.caption("LLM + RAG · Producto Cronos-N04")
 
+def obtener_api_key():
+try:
+if "OPENAI_API_KEY" in st.secrets:
+return st.secrets["OPENAI_API_KEY"]
+except Exception:
+pass
+return os.environ.get("OPENAI_API_KEY")
 with st.sidebar:
-    st.header("Configuracion")
-    api_key = st.text_input("API key de OpenAI", type="password",
-                            value=os.environ.get("OPENAI_API_KEY", ""))
-    st.divider()
+st.header("Configuracion")
+api_key = obtener_api_key()
+if api_key:
+st.success("API key cargada automaticamente.")
+else:
+api_key = st.text_input("API key de OpenAI", type="password")
+st.divider())
     st.header("Stock actual (demo)")
     st.caption("Cambia los valores y volve a preguntar para simular escenarios.")
     stock_pu = st.number_input("Conjunto Sistema PU (kg)", min_value=0, value=1200, step=100)
