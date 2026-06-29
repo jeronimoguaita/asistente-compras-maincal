@@ -103,7 +103,7 @@ def rag_answer(client, question, chunks, chunk_embeddings, datos_numericos, hist
 
 # ---------- Interfaz ----------
 st.set_page_config(page_title="Asistente de Compras", layout="centered")
-st.title("📦 Asistente de Compras")
+st.title("Asistente de Compras")
 st.caption("LLM + RAG · Producto Cronos-N04")
 
 def obtener_api_key():
